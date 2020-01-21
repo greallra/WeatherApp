@@ -1,38 +1,195 @@
-.App {
-  text-align: center;
+p {
+  border-bottom: 1px solid black;
+}
+.pac-container {
+  color: #18ab29;
+  background-color: green;
+}
+.successModalOpen {
+  /* background-color: rgba(0,0,0,0.1); */
+  background: rgba(128,128,128,0.9);
+  
+  z-index: 3;
+}
+/* Make clear */
+/* Make transparent */
+.unopacified {
+  opacity: 1;
+  transition: opacity 2s;
+}
+.opacified {
+  opacity: 0.2;
+  transition: opacity 2s;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+
+* {
+box-sizing: border-box;
+}
+body {
+margin: 0;
+background:#374749;
+color: white;
+}
+/* section 1 */
+.section1 h1 { 
+text-align: center;
+font-size: 2.2rem;
+padding: 29px 0;
+}
+/* Just Text Input */
+.section1 input[type=text] {
+position: relative;
+font-size: 1.2em;
+text-align: center;
+background: linear-gradient(21deg, #10abff, #1beabd);
+padding: 3px;
+border-radius: 9999em;
+color: white;
+}
+.section1 input[type=text] *:not(span) {
+  position: relative;
+  display: inherit;
+  border-radius: inherit;
+  margin: 0;
+  border: none;
+  outline: none;
+  padding: 0 .325em;
+  /* z-index: 1;  */
+}
+/* summon fancy shadow styles when focussed */
+input[type=text] *:focus + span {
+  opacity: 1;
+  transform: scale(1);
+}
+/* Input/SearchButton General */
+.section1 input[type=text], .searchButtonCont { 
+display: block;
+margin: auto;
+width: 26%;
+}
+/* Input on clicked */
+.section1 input[type=text] {
+/* border: 3px solid blue; */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.defaultButtonStyle, .greyButtonStyle {
+background:linear-gradient(21deg, grey, #1beabd);
+display: block;
+border-radius:28px;
+border:1px solid #18ab29;
+cursor:pointer;
+color:#ffffff;
+font-family:Arial;
+font-size:17px;
+padding:16px 31px;
+margin: 16px auto;
+text-decoration:none;
+text-shadow:0px 1px 0px #2f6627;
+width: 33%;
+text-align: center;
+}
+/* buttons like go back or cancel */
+.greyButtonStyle {
+  background:linear-gradient(21deg, grey, #f1f1f1);
+
   }
+.defaultButtonStyle:hover {
+background:linear-gradient(21deg, #1beabd, #12c09a);
+color:white;
+text-decoration: none;
+}
+.defaultButtonStyle:active {
+position:relative;
+top:1px;
+text-shadow:0px 1px 0px #1b1b1b;;
+}
+.greenBackground {
+background:linear-gradient(21deg, grey, #1beabd);
+}
+.durationChosenStyle {
+background:#abf7e7;
+border:8px solid #18ab29;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#durationBtn {
+background:linear-gradient(21deg, #f3f3f3, #f8f8f8);
+color: #374749;
+}
+#durationBtn:hover {
+background:linear-gradient(21deg, #f3f3f3, blue);
+color: #374749;
+}
+.weatherResultsCont {
+/* text-align: center; */
+width: 433px;
+margin: auto;
+height: 100px;
+}
+.weatherResultsCont > span{
+display: inline-block;
+/* border: 1px solid red; */
+border-bottom: 3px solid #12c09a;
+vertical-align: top;
+height: 100%;
+min-width: 130px;
+}
+.weatherResultsCont span:first-child h2 {
+
+}
+.weatherResultsCont span:nth-child(3){
+position: relative;
+}
+.weatherResultsCont span:nth-child(2) img {
+margin-top: 10px;
+height: 50px;
+width: 50px;
+}
+.weatherResultsCont span:nth-child(3) img{
+margin-top: 10px;
+height: 50px;
+width: 50px;
+}
+#tempNum {
+position: absolute;
+/* border: 1px solid green; */
+left: 45px;
+top: 10px;
+}
+.loader {
+  display: none;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid blue;
+  border-bottom: 16px solid blue;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  margin: auto;
+}
+.loaderActive {
+  display: block;
 }
 
-.App-link {
-  color: #61dafb;
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.disabled {
+  opacity: 0.6;
+}
+.appearToggle {
+  display: none !important;
+}
+.active {
+  background:linear-gradient(21deg, #1beabd, #12c09a);
+  border:5px solid #18ab29;
 }
