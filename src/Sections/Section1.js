@@ -8,9 +8,10 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 class Section1 extends React.Component {
     state = {
+        test: null,
         activeSection: 1,
         searchText: "",
-        searchTextIsValid: true,
+        searchTextIsValid: false,
         warningActive: false,
         chosenDuration: "",
         loaderActive: false,
@@ -34,27 +35,44 @@ class Section1 extends React.Component {
         //clear input
         this.setState({searchText : ""})
         const goog = window.google
-        const input = document.getElementById("searchTextField");
-        console.log(goog);
+        let input = document.getElementById("searchTextField");
         
-        new goog.maps.places.Autocomplete(input);
-        function initialize() {
-            console.log("initialize called")
-            
-            // new google.maps.places.Autocomplete(searchTextField);
-        }
-        // window.addEventListener("click", ()=>{
-        //     console.log(input.value);
-        //    this.setState({searchText:input.value})
-        // });
-        // window.addEventListener("keypress", ()=>{
-        //     console.log(input.value);
-        //     this.setState({searchText:input.value})
-        // });
+        const autoCompleteObject = new goog.maps.places.Autocomplete(input);
+        
+       // event listener on autocomplete
+        autoCompleteObject.addListener('place_changed', ()=> {
+            //get the inputted address predcited by using the event listener on autocomplete
+            console.log(autoCompleteObject);
+            const newSearchValue = autoCompleteObject.gm_accessors_.place.hd.formattedPrediction;
+            //do error check
+            if(!newSearchValue) {
+                alert("error in autocomplete listener")
+            }
+            else {
+                this.setState({searchText: newSearchValue})
+            }
+
+        });
+       
+        
+        // if (!place.geometry) {
+        //   // User entered the name of a Place that was not suggested and
+        //   // pressed the Enter key, or the Place Details request failed.
+        //   // Do anything you like with what was entered in the ac field.
+        //   console.log('You entered: ' + place.name);
+        //   return;
+        // }
+        window.addEventListener("click", ()=>{
+            console.log(this.state.searchText);
+        });
+        window.addEventListener("keypress", ()=>{
+            console.log(this.state.searchText);
+         
+        });
     }
     
     handleSearchText = (e)=>{
-        console.log("text", e.target.value);
+        //sets the value for input from the event Change
         this.setState({searchText:e.target.value},(()=>{
             if(this.state.searchText.length === 0){
                 this.setState({searchTextIsValid: false})
@@ -76,7 +94,8 @@ class Section1 extends React.Component {
 
     handleCheckLocation = (e)=>{
         e.preventDefault();
-   
+        console.log(this.state.searchText);
+        
         this.setState({loaderActive: true});
         //make sure api gets results
         const apiKey = "AIzaSyDJDbvpB5ANQBj-Q5cjjEoRZ388f0JsNjA";   
@@ -217,6 +236,7 @@ class Section1 extends React.Component {
                  <h1 className={`unopacified ${this.state.modalOpen ? "opacified": ""}`}>Choose a Location:</h1>
                  <input 
                     type="text" 
+                    name="location"
                     id="searchTextField" 
                     size="50" 
                     value={this.state.searchText} 
@@ -226,6 +246,8 @@ class Section1 extends React.Component {
  
                  {this.state.searchTextIsValid ? <a className={`searchButtonCont defaultButtonStyle unopacified ${this.state.modalOpen ? "opacified": ""}`}
                  onClick={(e)=>{this.handleCheckLocation(e)}}
+                //  disabled={!this.state.searchText}
+                disabled={true}
                  href="/jlksd"
                  >Check Location</a>: 
                  <button onClick={this.handleWarning} className="searchButtonCont defaultButtonStyle disabled" disabled>Check Location</button>}
