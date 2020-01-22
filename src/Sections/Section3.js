@@ -159,7 +159,7 @@ export default class Section3 extends React.Component {
  
             <div >
                 {this.html()}
-                <a class={`defaultButtonStyle`} href="http://localhost:3000/">New Search</a>
+                <a class={`defaultButtonStyle`} href="/">New Search</a>
            
                 {/* <span><h2>Tomorrow:</h2></span>
                 <span><img src={"./weatherImages/cloudy.svg"} alt=""/></span>

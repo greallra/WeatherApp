@@ -30,15 +30,37 @@ box-sizing: border-box;
 body {
 margin: 0;
 background:#374749;
-color: white;
+color: rgb(240,240,240);
 }
 /* section 1 */
+.section1 {
+ 
+}
 .section1 h1 { 
 text-align: center;
 font-size: 2.2rem;
+
 padding: 29px 0;
 }
+
 /* Just Text Input */
+#searchTextField::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-size: 20px;
+  color: rgb(240,240,240);
+}
+#searchTextField::-moz-placeholder { /* Firefox 19+ */
+  font-size: 30px;
+}
+@media only screen and (max-width: 600px){
+  #searchTextField::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    font-size: 13px;
+  }
+  #searchTextField::-moz-placeholder { /* Firefox 19+ */
+    font-size: 13px;
+  }
+}
+
+
 .section1 input[type=text] {
 position: relative;
 font-size: 1.2em;
@@ -47,6 +69,8 @@ background: linear-gradient(21deg, #10abff, #1beabd);
 padding: 3px;
 border-radius: 9999em;
 color: white;
+min-width: 250px;
+ max-width: 400px;
 }
 .section1 input[type=text] *:not(span) {
   position: relative;
@@ -68,6 +92,9 @@ input[type=text] *:focus + span {
 display: block;
 margin: auto;
 width: 26%;
+min-width: 250px;
+ max-width: 400px;
+
 }
 /* Input on clicked */
 .section1 input[type=text] {
@@ -80,7 +107,7 @@ display: block;
 border-radius:28px;
 border:1px solid #18ab29;
 cursor:pointer;
-color:#ffffff;
+color:rgba(51, 49, 53, 1);
 font-family:Arial;
 font-size:17px;
 padding:16px 31px;
@@ -164,11 +191,11 @@ top: 10px;
   border-radius: 50%;
   border-top: 16px solid blue;
   border-bottom: 16px solid blue;
-  width: 120px;
-  height: 120px;
+  width: 30px;
+  height: 30px;
   -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
-  margin: auto;
+  margin: 78px auto;
 }
 .loaderActive {
   display: block;

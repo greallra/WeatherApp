@@ -14,8 +14,7 @@ class Section1 extends React.Component {
         searchTextIsValid: false,
         warningActive: false,
         chosenDuration: "",
-        loaderActive: false,
-        loaderActive: false,
+        loaderActive: false ,
         lat: null,
         long: null,
         openweathermapAPI: "de6d52c2ebb7b1398526329875a49c57",
@@ -229,7 +228,7 @@ class Section1 extends React.Component {
                 {this.state.durationError ? <div className="alert alert-warning" style={{textAlign:"center"}}>Please Choose a duration</div>: <div></div>}
                 {/* Render Weather Error */}
                 {this.state.weatherError ? <div className="alert alert-warning" style={{textAlign:"center"}}>Problem Rendering Weather</div>: <div></div>}
-                <div className={`loader ${this.state.loaderActive ? "loaderActive" :""}`}>Checking</div>
+            
 
                  {/* Section One */}
                  {this.state.activeSection === 1? <section className="section1">
@@ -276,6 +275,9 @@ class Section1 extends React.Component {
             data={this.state.apiData}
             duration={this.state.duration}
             />: <div></div>}
+
+            {/* Loader */}
+            <div className={`loader ${this.state.loaderActive ? "loaderActive" :""}`}>Checking</div>
             </div>
           )
     }
